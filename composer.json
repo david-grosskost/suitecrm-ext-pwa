@@ -1,18 +1,18 @@
 {
-    "name": "david-grosskost/suitecrm-ext-exemple",
-    "description": "Extension d'exemple du modèle des extensions SuiteCRM.",
+    "name": "david-grosskost/suitecrm-ext-pwa",
+    "description": "Le CRM s'installe comme une application (PWA) sur téléphone et sur ordinateur, avec son nom et son icône.",
     "type": "suitecrm-extension",
     "license": "proprietary",
     "require": {
         "php": ">=8.4"
     },
     "require-dev": {
-        "david-grosskost/suitecrm-devkit": "^0.20"
+        "david-grosskost/suitecrm-devkit": "^0.26"
     },
     "autoload-dev": {
-        "classmap": ["legacy/include/"],
         "psr-4": {
-            "SuiteCrmExt\\Exemple\\Tests\\": "tests/"
+            "SuiteCrmExt\\Pwa\\": "legacy/include/pwa/",
+            "SuiteCrmExt\\Pwa\\Tests\\": "tests/"
         }
     },
     "repositories": [
