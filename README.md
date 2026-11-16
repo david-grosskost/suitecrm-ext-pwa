@@ -7,16 +7,38 @@ manque.
 
 ## Utilisation
 
-- **Installer** : dans Chrome ou Edge, l'icône « Installer l'application » de la barre
-  d'adresse (ordinateur) ou « Ajouter à l'écran d'accueil » (Android) ; sur iPhone, Safari
-  › Partager › « Sur l'écran d'accueil ».
+- **Installer** : voir « Installer sur un téléphone ou un ordinateur » plus bas.
 - **Nom** : le nom système de l'instance (**Administration › Paramètres système**,
-  « SuiteCRM » par défaut), repris aussitôt. Sous l'icône, « CRM » s'il dépasse
+  « SuiteCRM » par défaut), repris aussitôt ; son enregistrement demande
+  upstream-fixes 0.2.1 ou plus (bug de SuiteCRM 8). Sous l'icône, « CRM » s'il dépasse
   12 caractères.
 - **Icône** : **Administration › Application installable › Nom et icône de
   l'application** : une image PNG carrée de 512 × 512 px au moins (1 Mo au plus),
   **Enregistrer**. **Revenir à l'icône par défaut** rend l'icône neutre « CRM ». Réservé
   aux administrateurs.
+
+## Installer sur un téléphone ou un ordinateur
+
+Se connecter au CRM, **recharger la page une fois** (le navigateur enregistre alors le
+service worker), puis :
+
+| Appareil | Navigateur | Où |
+|---|---|---|
+| Android | Chrome | menu **⋮** › **Ajouter à l'écran d'accueil** › **Installer** (ou le bandeau « Installer l'application » en bas de l'écran) |
+| Android (Samsung) | Samsung Internet | icône d'installation (flèche vers le bas) dans la barre d'adresse, ou menu **≡** › **Ajouter la page à** › **Écran d'accueil** |
+| iPhone, iPad | Safari | **Partager** › **Sur l'écran d'accueil** |
+| Ordinateur | Chrome, Edge | icône **Installer** (écran avec une flèche) à droite de la barre d'adresse |
+
+L'icône et le nom de l'instance apparaissent sur l'écran d'accueil ; le CRM s'ouvre en
+plein écran, sans barre d'adresse. Vérifié sur un Samsung Galaxy A55 (Chrome).
+
+- **« Ajouter un raccourci » au lieu d'« Installer »** : le navigateur n'a pas encore vu le
+  manifeste ou le service worker. Recharger la page connecté, vérifier que l'extension est
+  active (`pwa` dans `EXTENSIONS`) et que le site est en HTTPS.
+- **Nom ou icône changés dans l'administration** : une application déjà installée les
+  reprend à sa prochaine mise à jour (le navigateur relit le manifeste à l'ouverture,
+  environ une fois par jour, parfois avec une confirmation) ; pour les voir tout de suite,
+  désinstaller puis réinstaller l'application.
 
 ## Fonctionnement
 
