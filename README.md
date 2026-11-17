@@ -64,6 +64,25 @@ plein écran, sans barre d'adresse. Vérifié sur un Samsung Galaxy A55 (Chrome)
 - L'extension passe le scanner du Chargeur de module : aucune fonction de fichier, aucun
   `echo` (la page passe par Smarty, les réponses par `print`).
 
+## Un service worker survit à son instance
+
+C'est le navigateur qui garde le service worker, pas le serveur. Il reste donc en place
+quand l'instance change sous lui : extension désinstallée, instance reconstruite de zéro,
+base effacée — le navigateur continue de servir l'interface depuis son cache et d'appeler
+un point d'entrée qui n'existe peut-être plus.
+
+Ça se manifeste par des comportements qui n'ont aucun sens : des écrans d'une version
+précédente, des erreurs sur des adresses qui répondent correctement quand on les ouvre à
+la main, ou un symptôme qu'on croit avoir corrigé et qui revient.
+
+**Après avoir détruit ou reconstruit une instance**, vider le site dans le navigateur :
+F12 → **Application** → **Storage** → *Clear site data*. Fermer ensuite **tous** les
+onglets du site. Un simple F5 ne suffit pas : un service worker continue de contrôler les
+pages déjà ouvertes jusqu'à ce que la dernière soit fermée, même après sa désinscription.
+
+Ça vaut surtout pour une machine où l'on crée des démos à la chaîne sur la même adresse :
+le service worker de la démo précédente est encore là quand la suivante démarre.
+
 ## Pour les développeurs
 
 | Fichier | Rôle |
